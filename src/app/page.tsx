@@ -60,9 +60,9 @@ export default function Home() {
       <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-[#2d1f3d] rounded-full blur-[120px] opacity-50" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-[#3d2a2a] rounded-full blur-[100px] opacity-30" />
 
-      <header className="absolute top-0 left-0 w-full h-16 flex items-center justify-between px-6">
+      {/* <header className="absolute top-0 left-0 w-full h-16 flex items-center justify-between px-6">
         <div className="text-2xl text-white font-inter">graeme.codes</div>
-      </header>
+      </header> */}
 
       <div className="relative z-10 min-h-screen flex items-center justify-center flex-col flex-1 px-8">
         <div className="flex flex-col items-center justify-center py-12 gap-2">
