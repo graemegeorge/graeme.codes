@@ -1,5 +1,5 @@
 import Navigation from "../components/Navigation";
-import { Mail, Linkedin, Github, MessageSquare } from "lucide-react";
+import { Mail, Linkedin, Github, MessageSquare, Code2 } from "lucide-react";
 
 const contactMethods = [
   {
@@ -20,6 +20,12 @@ const contactMethods = [
     href: "https://github.com/graemegeorge",
     icon: Github,
   },
+  {
+    label: "CodeSandbox",
+    value: "codesandbox.io/u/graemegeorge",
+    href: "https://codesandbox.io/u/graemegeorge",
+    icon: Code2,
+  },
 ];
 
 export default function Contact() {
@@ -36,7 +42,9 @@ export default function Contact() {
       <div className="relative z-10 min-h-screen flex items-center justify-center flex-col flex-1 px-8 py-24">
         <div className="w-full max-w-md">
           <div className="flex flex-col items-center justify-center mb-12 gap-2">
-            <div className="text-4xl font-inter mb-2 theme-text-primary">Contact</div>
+            <div className="text-4xl font-inter mb-2 theme-text-primary">
+              Contact
+            </div>
             <div className="text-xl font-inter theme-text-muted">
               Let's work together
             </div>
@@ -54,7 +62,9 @@ export default function Contact() {
                 <span className="flex items-center gap-3">
                   <Icon className="w-5 h-5 transition-colors duration-300 theme-text-muted theme-accent-hover" />
                   <div className="flex flex-col items-start">
-                    <span className="font-medium theme-text-secondary">{label}</span>
+                    <span className="font-medium theme-text-secondary">
+                      {label}
+                    </span>
                     <span className="text-xs theme-text-muted">{value}</span>
                   </div>
                 </span>
@@ -79,10 +89,13 @@ export default function Contact() {
             <div className="flex items-start gap-3">
               <MessageSquare className="w-5 h-5 mt-0.5 flex-shrink-0 theme-text-muted" />
               <div className="flex-1">
-                <h3 className="text-sm font-inter mb-2 theme-text-primary">Get in Touch</h3>
+                <h3 className="text-sm font-inter mb-2 theme-text-primary">
+                  Get in Touch
+                </h3>
                 <p className="text-xs leading-relaxed theme-text-muted">
-                  I'm always open to discussing new projects, creative ideas, or opportunities 
-                  to be part of your vision. Feel free to reach out through any of the channels above.
+                  I'm always open to discussing new projects, creative ideas, or
+                  opportunities to be part of your vision. Feel free to reach
+                  out through any of the channels above.
                 </p>
               </div>
             </div>
