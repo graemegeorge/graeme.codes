@@ -16,32 +16,30 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-
     // Priority: localStorage > system preference > dark (default)
     const storedTheme = localStorage.getItem("theme") as Theme | null;
+    let resolvedTheme: Theme;
 
     if (storedTheme && (storedTheme === "light" || storedTheme === "dark")) {
-      // User has explicitly set a preference
-      setTheme(storedTheme);
-      document.documentElement.setAttribute("data-theme", storedTheme);
+      resolvedTheme = storedTheme;
     } else {
-      // Favour system preference, default to dark
       try {
         const systemPrefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)",
         ).matches;
-        // Respect system preference (favouring user's system settings)
-        // Default to dark mode if system preference cannot be determined
-        const initialTheme: Theme = systemPrefersDark ? "dark" : "light";
-        setTheme(initialTheme);
-        document.documentElement.setAttribute("data-theme", initialTheme);
+        resolvedTheme = systemPrefersDark ? "dark" : "light";
       } catch {
-        // Fallback to dark if matchMedia is not available
-        setTheme("dark");
-        document.documentElement.setAttribute("data-theme", "dark");
+        resolvedTheme = "dark";
       }
     }
+
+    document.documentElement.setAttribute("data-theme", resolvedTheme);
+
+    // Defer setState to avoid synchronous updates inside the effect (React 19)
+    queueMicrotask(() => {
+      setMounted(true);
+      setTheme(resolvedTheme);
+    });
   }, []);
 
   useEffect(() => {
