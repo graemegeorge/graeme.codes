@@ -17,10 +17,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true);
-    
+
     // Priority: localStorage > system preference > dark (default)
     const storedTheme = localStorage.getItem("theme") as Theme | null;
-    
+
     if (storedTheme && (storedTheme === "light" || storedTheme === "dark")) {
       // User has explicitly set a preference
       setTheme(storedTheme);
@@ -29,7 +29,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       // Favour system preference, default to dark
       try {
         const systemPrefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
+          "(prefers-color-scheme: dark)",
         ).matches;
         // Respect system preference (favouring user's system settings)
         // Default to dark mode if system preference cannot be determined
