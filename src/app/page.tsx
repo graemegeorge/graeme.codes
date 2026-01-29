@@ -8,6 +8,7 @@ import {
   Mail,
   FileUser,
 } from "lucide-react";
+import Link from "next/link";
 
 const links = [
   {
@@ -36,17 +37,22 @@ const links = [
 const secondaryLinks = [
   {
     label: "Blog",
-    href: "#blog",
+    href: "/blog",
     icon: FileText,
   },
   {
-    label: "Work",
-    href: "#work",
+    label: "Portfolio",
+    href: "/portfolio",
     icon: Briefcase,
   },
   {
+    label: "About",
+    href: "/about",
+    icon: FileUser,
+  },
+  {
     label: "Contact",
-    href: "mailto:graemelgeorge@gmail.com",
+    href: "/contact",
     icon: Mail,
   },
 ];
@@ -103,15 +109,16 @@ export default function Home() {
             ))}
           </nav>
 
-          {/* <div className="flex items-center gap-4 my-8">
-            <div className="flex-1 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
+          <div className="flex items-center gap-4 my-8">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
           </div>
 
           <div className="flex items-center justify-center gap-8">
-            {secondaryLinks.map(({ label, icon: Icon, ...props }) => (
-              <a
+            {secondaryLinks.map(({ label, icon: Icon, href, ...props }) => (
+              <Link
                 className="group flex flex-col items-center gap-2"
                 key={label}
+                href={href}
                 {...props}
               >
                 <div className="p-3.5 rounded-xl bg-white/3 border border-white/6 group-hover:bg-white/6 group-hover:border-white/12 transition-all duration-300">
@@ -120,9 +127,9 @@ export default function Home() {
                 <span className="text-sm text-[#6a6a7a] group-hover:text-[#a0a0b0] transition-colors duration-300">
                   {label}
                 </span>
-              </a>
+              </Link>
             ))}
-          </div> */}
+          </div>
 
           <p className="text-[#4a4a5a] text-sm font-light tracking-wide py-12">
             Building exceptional digital experiences
