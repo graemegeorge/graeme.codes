@@ -57,6 +57,33 @@ const secondaryLinks = [
   },
 ];
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Senior Frontend Engineer | React & Next.js Expert | London, UK",
+  description:
+    "Graeme George - Senior Frontend Engineer specializing in React, Next.js, and TypeScript. Based in London, UK. Available for remote opportunities. Building exceptional digital experiences with modern web technologies.",
+  keywords: [
+    "Frontend Engineer London",
+    "React Developer UK",
+    "Next.js Developer London",
+    "TypeScript Developer",
+    "Remote Frontend Engineer",
+    "Senior Frontend Developer",
+    "React Expert London",
+    "Next.js Expert UK",
+  ],
+  openGraph: {
+    title: "Graeme George - Senior Frontend Engineer | React & Next.js Expert",
+    description:
+      "Senior Frontend Engineer specializing in React, Next.js, and TypeScript. Based in London, UK. Available for remote opportunities.",
+    url: "/",
+  },
+  alternates: {
+    canonical: "/",
+  },
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen relative overflow-hidden">
@@ -72,10 +99,15 @@ export default function Home() {
 
       <div className="relative z-10 min-h-screen flex items-center justify-center flex-col flex-1 px-8">
         <div className="flex flex-col items-center justify-center py-12 gap-2">
-          <div className="text-4xl font-inter theme-text-primary">Graeme George</div>
-          <div className="text-xl font-inter theme-text-muted">
+          <h1 className="text-4xl font-inter theme-text-primary">
+            Graeme George
+          </h1>
+          <p className="text-xl font-inter theme-text-muted">
             Senior Frontend Engineer
-          </div>
+          </p>
+          <p className="text-sm font-inter theme-text-muted-dark mt-2">
+            React • Next.js • TypeScript | London, UK • Remote Available
+          </p>
         </div>
 
         <div className="w-full max-w-md text-center">
@@ -86,17 +118,28 @@ export default function Home() {
                 {...props}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={
+                  label === "Download CV"
+                    ? "Download Graeme George CV"
+                    : `Visit ${label}`
+                }
                 className="group flex items-center justify-between w-full px-5 py-4 rounded-2xl border backdrop-blur-sm transition-all duration-300 theme-glass"
               >
                 <span className="flex items-center gap-3">
-                  <Icon className="w-5 h-5 transition-colors duration-300 theme-text-muted theme-accent-hover" />
-                  <span className="font-medium theme-text-secondary">{label}</span>
+                  <Icon
+                    className="w-5 h-5 transition-colors duration-300 theme-text-muted theme-accent-hover"
+                    aria-hidden="true"
+                  />
+                  <span className="font-medium theme-text-secondary">
+                    {label}
+                  </span>
                 </span>
                 <svg
                   className="w-4 h-4 transition-all duration-300 theme-text-muted-dark theme-accent-hover group-hover:translate-x-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -122,7 +165,10 @@ export default function Home() {
                 {...props}
               >
                 <div className="p-3.5 rounded-xl border transition-all duration-300 theme-glass">
-                  <Icon className="w-5 h-5 transition-colors duration-300 theme-text-muted theme-accent-hover" />
+                  <Icon
+                    className="w-5 h-5 transition-colors duration-300 theme-text-muted theme-accent-hover"
+                    aria-hidden="true"
+                  />
                 </div>
                 <span className="text-sm transition-colors duration-300 theme-text-muted group-hover:opacity-80">
                   {label}
@@ -132,7 +178,9 @@ export default function Home() {
           </div>
 
           <p className="text-sm font-light tracking-wide py-12 theme-text-muted-dark">
-            Building exceptional digital experiences
+            Building exceptional digital experiences with React, Next.js, and
+            TypeScript. Available for projects in London, UK, and remote
+            opportunities worldwide.
           </p>
         </div>
       </div>
