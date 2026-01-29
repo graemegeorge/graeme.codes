@@ -60,20 +60,20 @@ const secondaryLinks = [
 export default function Home() {
   return (
     <main className="min-h-screen relative overflow-hidden">
-      <div className="absolute inset-0 bg-[#0a0a0f]" />
+      <div className="absolute inset-0 theme-page-bg" />
 
-      <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-[#1a1a2e] rounded-full blur-[120px] opacity-60" />
-      <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-[#2d1f3d] rounded-full blur-[120px] opacity-50" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-[#3d2a2a] rounded-full blur-[100px] opacity-30" />
+      <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 rounded-full blur-[120px] opacity-60 theme-gradient-1" />
+      <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 rounded-full blur-[120px] opacity-50 theme-gradient-2" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 rounded-full blur-[100px] opacity-30 theme-gradient-3" />
 
       {/* <header className="absolute top-0 left-0 w-full h-16 flex items-center justify-between px-6">
-        <div className="text-2xl text-white font-inter">graeme.codes</div>
+        <div className="text-2xl font-inter theme-text-primary">graeme.codes</div>
       </header> */}
 
       <div className="relative z-10 min-h-screen flex items-center justify-center flex-col flex-1 px-8">
         <div className="flex flex-col items-center justify-center py-12 gap-2">
-          <div className="text-4xl text-white font-inter">Graeme George</div>
-          <div className="text-xl text-zinc-400 font-inter">
+          <div className="text-4xl font-inter theme-text-primary">Graeme George</div>
+          <div className="text-xl font-inter theme-text-muted">
             Senior Frontend Engineer
           </div>
         </div>
@@ -86,14 +86,14 @@ export default function Home() {
                 {...props}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between w-full px-5 py-4 rounded-2xl bg-white/3 border border-white/6 backdrop-blur-sm hover:bg-white/6 hover:border-white/12 transition-all duration-300"
+                className="group flex items-center justify-between w-full px-5 py-4 rounded-2xl border backdrop-blur-sm transition-all duration-300 theme-glass"
               >
                 <span className="flex items-center gap-3">
-                  <Icon className="w-5 h-5 text-[#6a6a7a] group-hover:text-[#e8a87c] transition-colors duration-300" />
-                  <span className="text-[#e4e4e8] font-medium">{label}</span>
+                  <Icon className="w-5 h-5 transition-colors duration-300 theme-text-muted theme-accent-hover" />
+                  <span className="font-medium theme-text-secondary">{label}</span>
                 </span>
                 <svg
-                  className="w-4 h-4 text-[#4a4a5a] group-hover:text-[#e8a87c] group-hover:translate-x-1 transition-all duration-300"
+                  className="w-4 h-4 transition-all duration-300 theme-text-muted-dark theme-accent-hover group-hover:translate-x-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -110,7 +110,7 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-4 my-8">
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[var(--divider)] to-transparent" />
           </div>
 
           <div className="flex items-center justify-center gap-8">
@@ -121,17 +121,17 @@ export default function Home() {
                 href={href}
                 {...props}
               >
-                <div className="p-3.5 rounded-xl bg-white/3 border border-white/6 group-hover:bg-white/6 group-hover:border-white/12 transition-all duration-300">
-                  <Icon className="w-5 h-5 text-[#6a6a7a] group-hover:text-[#e8a87c] transition-colors duration-300" />
+                <div className="p-3.5 rounded-xl border transition-all duration-300 theme-glass">
+                  <Icon className="w-5 h-5 transition-colors duration-300 theme-text-muted theme-accent-hover" />
                 </div>
-                <span className="text-sm text-[#6a6a7a] group-hover:text-[#a0a0b0] transition-colors duration-300">
+                <span className="text-sm transition-colors duration-300 theme-text-muted group-hover:opacity-80">
                   {label}
                 </span>
               </Link>
             ))}
           </div>
 
-          <p className="text-[#4a4a5a] text-sm font-light tracking-wide py-12">
+          <p className="text-sm font-light tracking-wide py-12 theme-text-muted-dark">
             Building exceptional digital experiences
           </p>
         </div>

@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,10 +12,87 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Dark theme (default) */
+:root[data-theme="dark"],
+:root:not([data-theme]) {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --page-bg: #0a0a0f;
+  --text-primary: #ffffff;
+  --text-secondary: #e4e4e8;
+  --text-muted: #6a6a7a;
+  --text-muted-dark: #4a4a5a;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-hover-bg: rgba(255, 255, 255, 0.06);
+  --glass-hover-border: rgba(255, 255, 255, 0.12);
+  --accent: #e8a87c;
+  --gradient-1: #1a1a2e;
+  --gradient-2: #2d1f3d;
+  --gradient-3: #3d2a2a;
+  --divider: rgba(255, 255, 255, 0.1);
+}
+
+/* Light theme */
+:root[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #171717;
+  --page-bg: #f8f9fa;
+  --text-primary: #171717;
+  --text-secondary: #2d2d2d;
+  --text-muted: #6b7280;
+  --text-muted-dark: #9ca3af;
+  --glass-bg: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-hover-bg: rgba(0, 0, 0, 0.06);
+  --glass-hover-border: rgba(0, 0, 0, 0.12);
+  --accent: #e8a87c;
+  --gradient-1: #e5e7eb;
+  --gradient-2: #d1d5db;
+  --gradient-3: #f3f4f6;
+  --divider: rgba(0, 0, 0, 0.1);
+}
+
+/* Fallback for system preference when no explicit theme is set */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --page-bg: #0a0a0f;
+    --text-primary: #ffffff;
+    --text-secondary: #e4e4e8;
+    --text-muted: #6a6a7a;
+    --text-muted-dark: #4a4a5a;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-hover-bg: rgba(255, 255, 255, 0.06);
+    --glass-hover-border: rgba(255, 255, 255, 0.12);
+    --accent: #e8a87c;
+    --gradient-1: #1a1a2e;
+    --gradient-2: #2d1f3d;
+    --gradient-3: #3d2a2a;
+    --divider: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --background: #ffffff;
+    --foreground: #171717;
+    --page-bg: #f8f9fa;
+    --text-primary: #171717;
+    --text-secondary: #2d2d2d;
+    --text-muted: #6b7280;
+    --text-muted-dark: #9ca3af;
+    --glass-bg: rgba(0, 0, 0, 0.03);
+    --glass-border: rgba(0, 0, 0, 0.06);
+    --glass-hover-bg: rgba(0, 0, 0, 0.06);
+    --glass-hover-border: rgba(0, 0, 0, 0.12);
+    --accent: #e8a87c;
+    --gradient-1: #e5e7eb;
+    --gradient-2: #d1d5db;
+    --gradient-3: #f3f4f6;
+    --divider: rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -23,4 +100,60 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme-aware utility classes */
+.theme-page-bg {
+  background-color: var(--page-bg);
+}
+
+.theme-text-primary {
+  color: var(--text-primary);
+}
+
+.theme-text-secondary {
+  color: var(--text-secondary);
+}
+
+.theme-text-muted {
+  color: var(--text-muted);
+}
+
+.theme-text-muted-dark {
+  color: var(--text-muted-dark);
+}
+
+.theme-glass {
+  background-color: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.theme-glass:hover {
+  background-color: var(--glass-hover-bg);
+  border-color: var(--glass-hover-border);
+}
+
+.theme-gradient-1 {
+  background-color: var(--gradient-1);
+}
+
+.theme-gradient-2 {
+  background-color: var(--gradient-2);
+}
+
+.theme-gradient-3 {
+  background-color: var(--gradient-3);
+}
+
+.theme-divider {
+  background-color: var(--divider);
+}
+
+.theme-accent {
+  color: var(--accent);
+}
+
+.theme-accent-hover:hover {
+  color: var(--accent);
 }
