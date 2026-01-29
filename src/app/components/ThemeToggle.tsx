@@ -9,7 +9,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed top-6 right-6 z-50 p-3 rounded-xl border backdrop-blur-sm transition-all duration-300 theme-glass group"
+      className="fixed top-6 right-6 z-50 p-3 rounded-xl backdrop-blur-sm transition-all duration-300 theme-glass group"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
       {theme === "dark" ? (
