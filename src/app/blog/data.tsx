@@ -610,7 +610,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "the-art-of-component-design",
-    title: "The Art of Component Design",
+    title: "🎯 The Art of Component Design",
     excerpt:
       "A deep dive into creating reusable, composable React components that scale with your application.",
     date: "January 10, 2026",
@@ -619,7 +619,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "performance-optimization-strategies",
-    title: "Performance Optimization Strategies",
+    title: "🚀 Performance Optimization Strategies",
     excerpt:
       "Practical techniques for improving web application performance and user experience.",
     date: "January 5, 2026",
