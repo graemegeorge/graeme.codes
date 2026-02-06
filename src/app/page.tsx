@@ -86,103 +86,174 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative overflow-hidden">
-      <div className="absolute inset-0 theme-page-bg" />
-
-      <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 rounded-full blur-[120px] opacity-60 theme-gradient-1" />
-      <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 rounded-full blur-[120px] opacity-50 theme-gradient-2" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 rounded-full blur-[100px] opacity-30 theme-gradient-3" />
-
-      {/* <header className="absolute top-0 left-0 w-full h-16 flex items-center justify-between px-6">
-        <div className="text-2xl font-inter theme-text-primary">graeme.codes</div>
-      </header> */}
-
-      <div className="relative z-10 min-h-screen flex items-center justify-center flex-col flex-1 px-8">
-        <div className="flex flex-col items-center justify-center py-12 gap-2">
-          <h1 className="text-4xl font-inter theme-text-primary">
-            Graeme George
-          </h1>
-          <p className="text-xl font-inter theme-text-muted">
-            Senior Frontend Engineer
-          </p>
-          <p className="text-sm font-inter theme-text-muted-dark mt-2">
-            React • Next.js • TypeScript | London, UK • Remote Available
-          </p>
-        </div>
-
-        <div className="w-full max-w-md text-center">
-          <nav className="space-y-3 mb-8">
-            {links.map(({ label, icon: Icon, ...props }) => (
-              <a
-                key={label}
-                {...props}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={
-                  label === "Download CV"
-                    ? "Download Graeme George CV"
-                    : `Visit ${label}`
-                }
-                className="group flex items-center justify-between w-full px-5 py-4 rounded-2xl border backdrop-blur-sm transition-all duration-300 theme-glass"
-              >
-                <span className="flex items-center gap-3">
-                  <Icon
-                    className="w-5 h-5 transition-colors duration-300 theme-text-muted theme-accent-hover"
-                    aria-hidden="true"
-                  />
-                  <span className="font-medium theme-text-secondary">
-                    {label}
-                  </span>
-                </span>
-                <svg
-                  className="w-4 h-4 transition-all duration-300 theme-text-muted-dark theme-accent-hover group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-            ))}
+    <main className="app-shell">
+      <div className="app-frame">
+        <header className="nav-rail motion-reveal">
+          <div className="label">Graeme George</div>
+          <nav className="nav-links" aria-label="Primary">
+            <Link href="/portfolio">Work</Link>
+            <Link href="/blog">Writing</Link>
+            <Link href="/contact">Contact</Link>
           </nav>
+        </header>
 
-          <div className="flex items-center gap-4 my-8">
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[var(--divider)] to-transparent" />
+        <section className="grid-12 mt-12">
+          <div className="col-span-12 lg:col-span-7 list-block">
+            <div className="motion-reveal" data-delay="1">
+              <div className="label">Senior Frontend Engineer</div>
+              <h1 className="hero-title">
+                I build engineered web systems with brutal clarity.
+              </h1>
+            </div>
+            <div className="motion-reveal" data-delay="2">
+              <div className="hero-script">Design as infrastructure.</div>
+              <p className="subtle mt-4 text-base">
+                React, Next.js, and TypeScript for teams that want interfaces
+                to feel authored, not assembled. Based in London with global
+                availability.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-4 mt-6 motion-reveal" data-delay="2">
+              <a className="btn btn-primary" href="/contact">
+                Start a project
+              </a>
+              <a className="btn btn-secondary" href="/Graeme_George_CV_2026_P.pdf">
+                Download CV
+              </a>
+            </div>
           </div>
 
-          <div className="flex items-center justify-center gap-8">
-            {secondaryLinks.map(({ label, icon: Icon, href, ...props }) => (
-              <Link
-                className="group flex flex-col items-center gap-2"
-                key={label}
-                href={href}
-                {...props}
-              >
-                <div className="p-3.5 rounded-xl border transition-all duration-300 theme-glass">
-                  <Icon
-                    className="w-5 h-5 transition-colors duration-300 theme-text-muted theme-accent-hover"
-                    aria-hidden="true"
-                  />
-                </div>
-                <span className="text-sm transition-colors duration-300 theme-text-muted group-hover:opacity-80">
-                  {label}
-                </span>
-              </Link>
+          <div className="col-span-12 lg:col-span-5 list-block">
+            <div className="block motion-reveal" data-delay="1">
+              <div className="label">Status</div>
+              <p className="text-lg">Selective availability for Q2 2026.</p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                <span className="tag">Remote-first</span>
+                <span className="tag">Product + UI</span>
+                <span className="tag">London</span>
+              </div>
+            </div>
+            <div className="block motion-reveal" data-delay="2">
+              <div className="label">Signal</div>
+              <div className="list-block mt-3">
+                {links.map(({ label, icon: Icon, ...props }) => (
+                  <a
+                    key={label}
+                    {...props}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={
+                      label === "Download CV"
+                        ? "Download Graeme George CV"
+                        : `Visit ${label}`
+                    }
+                    className="flex items-center justify-between"
+                  >
+                    <span className="flex items-center gap-3">
+                      <span className="icon-slab">
+                        <Icon className="w-4 h-4" aria-hidden="true" />
+                      </span>
+                      <span className="text-sm">{label}</span>
+                    </span>
+                    <span className="label">Open</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="grid-12 mt-16">
+          <div className="col-span-12">
+            <div className="rule" />
+          </div>
+          <div className="col-span-12 lg:col-span-4">
+            <div className="label">Selected work</div>
+            <p className="subtle mt-4">
+              Systems that needed restraint, speed, and a strong authorial
+              voice.
+            </p>
+          </div>
+          <div className="col-span-12 lg:col-span-8 list-block">
+            {[
+              "Product design system rebuild for a fintech platform",
+              "Editorial commerce UI with performance-first architecture",
+              "Portfolio platform for a global creative collective",
+            ].map((item) => (
+              <div className="block" key={item}>
+                <div className="label">Case</div>
+                <p className="text-lg">{item}</p>
+              </div>
             ))}
           </div>
+        </section>
 
-          <p className="text-sm font-light tracking-wide py-12 theme-text-muted-dark">
-            Building exceptional digital experiences with React, Next.js, and
-            TypeScript. Available for projects in London, UK, and remote
-            opportunities worldwide.
-          </p>
-        </div>
+        <section className="grid-12 mt-16">
+          <div className="col-span-12">
+            <div className="rule" />
+          </div>
+          <div className="col-span-12 lg:col-span-6 list-block">
+            <div className="label">Capabilities</div>
+            <div className="block">
+              <ul className="list-block">
+                {[
+                  "Interface systems and component architecture",
+                  "Brutalist-leaning visual identity",
+                  "Performance-first Next.js builds",
+                  "Design tokens and theme engineering",
+                ].map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="col-span-12 lg:col-span-6 list-block">
+            <div className="label">Contact</div>
+            <div className="block">
+              <label className="label" htmlFor="email">
+                Project briefing
+              </label>
+              <input
+                id="email"
+                className="field mt-3"
+                placeholder="Your email"
+                type="email"
+              />
+              <div className="flex gap-3 mt-4">
+                <button className="btn btn-primary" type="button">
+                  Send
+                </button>
+                <a className="btn btn-secondary" href="/contact">
+                  Full contact
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer className="grid-12 mt-16 pb-10">
+          <div className="col-span-12">
+            <div className="rule" />
+          </div>
+          <div className="col-span-12 lg:col-span-6">
+            <p className="label">Digital presence</p>
+            <div className="flex gap-3 mt-4">
+              {secondaryLinks.map(({ label, icon: Icon, href, ...props }) => (
+                <Link className="tag" key={label} href={href} {...props}>
+                  <Icon className="w-4 h-4" aria-hidden="true" />
+                  {label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="col-span-12 lg:col-span-6">
+            <p className="subtle">
+              Building exceptional digital experiences with React, Next.js, and
+              TypeScript. Available for projects in London, UK, and remote
+              opportunities worldwide.
+            </p>
+          </div>
+        </footer>
       </div>
     </main>
   );

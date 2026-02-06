@@ -1,6 +1,6 @@
-import Navigation from "../components/Navigation";
 import { Briefcase, ExternalLink, Code } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Portfolio | React & Next.js Projects | Frontend Engineer",
@@ -51,80 +51,69 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <main className="min-h-screen relative overflow-hidden">
-      <div className="absolute inset-0 theme-page-bg" />
+    <main className="app-shell">
+      <div className="app-frame">
+        <header className="nav-rail">
+          <div className="label">Graeme George</div>
+          <nav className="nav-links" aria-label="Primary">
+            <Link href="/">Home</Link>
+            <Link href="/blog">Writing</Link>
+            <Link href="/contact">Contact</Link>
+          </nav>
+        </header>
 
-      <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 rounded-full blur-[120px] opacity-60 theme-gradient-1" />
-      <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 rounded-full blur-[120px] opacity-50 theme-gradient-2" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 rounded-full blur-[100px] opacity-30 theme-gradient-3" />
-
-      <Navigation />
-
-      <div className="relative z-10 min-h-screen flex items-center justify-center flex-col flex-1 px-8 py-24">
-        <div className="w-full max-w-3xl">
-          <header className="flex flex-col items-center justify-center mb-12 gap-2">
-            <h1 className="text-4xl font-inter mb-2 theme-text-primary">
-              Portfolio
-            </h1>
-            <p className="text-xl font-inter theme-text-muted">
-              Selected projects and case studies
+        <section className="grid-12 mt-12">
+          <div className="col-span-12 lg:col-span-5">
+            <div className="label">Portfolio</div>
+            <h1 className="hero-title">Selected systems and case studies.</h1>
+            <p className="subtle mt-4">
+              A mix of product design, frontend architecture, and performance
+              engineering.
             </p>
-          </header>
-
-          <div className="space-y-4">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="group px-6 py-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 theme-glass"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Briefcase
-                        className="w-4 h-4 transition-colors duration-300 theme-text-muted theme-accent-hover"
-                        aria-hidden="true"
-                      />
-                      <h2 className="text-xl font-inter transition-colors duration-300 theme-text-primary theme-accent-hover">
-                        {project.title}
-                      </h2>
-                    </div>
-                    <p className="text-sm leading-relaxed mb-4 theme-text-muted">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="flex items-center gap-1.5 text-xs px-3 py-1 rounded-full theme-text-muted"
-                          style={{ backgroundColor: "var(--glass-bg)" }}
-                        >
-                          <Code className="w-3 h-3" aria-hidden="true" />
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+          </div>
+          <div className="col-span-12 lg:col-span-7 list-block">
+            {projects.map((project) => (
+              <div className="block" key={project.title}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="icon-slab">
+                      <Briefcase className="w-4 h-4" aria-hidden="true" />
+                    </span>
+                    <h2 className="text-xl">{project.title}</h2>
                   </div>
                   <a
                     href={project.link}
                     aria-label={`View ${project.title} project`}
-                    className="flex-shrink-0 mt-1 p-2 rounded-lg border transition-all duration-300 theme-glass"
+                    className="btn btn-secondary"
                   >
-                    <ExternalLink
-                      className="w-4 h-4 transition-colors duration-300 theme-text-muted-dark theme-accent-hover"
-                      aria-hidden="true"
-                    />
+                    <ExternalLink className="w-4 h-4" aria-hidden="true" />
                   </a>
+                </div>
+                <p className="subtle mt-3">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {project.tech.map((tech) => (
+                    <span className="tag" key={tech}>
+                      <Code className="w-3 h-3" aria-hidden="true" />
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
           </div>
+        </section>
 
-          <p className="text-sm font-light tracking-wide text-center mt-12 theme-text-muted-dark">
-            More projects available upon request. Specializing in React,
-            Next.js, and TypeScript for clients in London, UK, and remote
-            projects worldwide.
-          </p>
-        </div>
+        <footer className="grid-12 mt-16 pb-10">
+          <div className="col-span-12">
+            <div className="rule" />
+          </div>
+          <div className="col-span-12 lg:col-span-6">
+            <p className="label">Scope</p>
+            <p className="subtle mt-4">
+              More projects available upon request.
+            </p>
+          </div>
+        </footer>
       </div>
     </main>
   );
