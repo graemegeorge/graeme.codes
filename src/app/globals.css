@@ -1,159 +1,223 @@
 @import "tailwindcss";
 
-:root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-}
+/* ================================================================
+   DESIGN SYSTEM: Brutalist-Refined
+   Swiss grid + hard geometry + typographic contrast
+   ================================================================ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --font-sans: var(--font-space-grotesk);
+  --font-accent: var(--font-caveat);
 }
 
-/* Dark theme (default) */
+/* ----------------------------------------------------------------
+   DARK THEME (default)
+   ---------------------------------------------------------------- */
 :root[data-theme="dark"],
 :root:not([data-theme]) {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --page-bg: #0a0a0f;
-  --text-primary: #ffffff;
-  --text-secondary: #e4e4e8;
-  --text-muted: #6a6a7a;
-  --text-muted-dark: #4a4a5a;
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.06);
-  --glass-hover-bg: rgba(255, 255, 255, 0.06);
-  --glass-hover-border: rgba(255, 255, 255, 0.12);
-  --accent: #e8a87c;
-  --gradient-1: #1a1a2e;
-  --gradient-2: #2d1f3d;
-  --gradient-3: #3d2a2a;
-  --divider: rgba(255, 255, 255, 0.1);
+  --bg: #000000;
+  --fg: #FFFFFF;
+  --fg-secondary: #A0A0A0;
+  --fg-muted: #555555;
+  --accent: #FF4D00;
+  --accent-hover: #FF6A2A;
+  --border: #222222;
+  --border-strong: #444444;
+  --surface: #0A0A0A;
+  --surface-raised: #111111;
+  --surface-hover: #1A1A1A;
 }
 
-/* Light theme */
+/* ----------------------------------------------------------------
+   LIGHT THEME
+   ---------------------------------------------------------------- */
 :root[data-theme="light"] {
-  --background: #ffffff;
-  --foreground: #171717;
-  --page-bg: #f8f9fa;
-  --text-primary: #171717;
-  --text-secondary: #2d2d2d;
-  --text-muted: #6b7280;
-  --text-muted-dark: #9ca3af;
-  --glass-bg: rgba(0, 0, 0, 0.03);
-  --glass-border: rgba(0, 0, 0, 0.06);
-  --glass-hover-bg: rgba(0, 0, 0, 0.06);
-  --glass-hover-border: rgba(0, 0, 0, 0.12);
-  --accent: #e8a87c;
-  --gradient-1: #e5e7eb;
-  --gradient-2: #d1d5db;
-  --gradient-3: #f3f4f6;
-  --divider: rgba(0, 0, 0, 0.1);
+  --bg: #F5F0EB;
+  --fg: #000000;
+  --fg-secondary: #555555;
+  --fg-muted: #888888;
+  --accent: #FF4D00;
+  --accent-hover: #E04400;
+  --border: #C8C0B8;
+  --border-strong: #8A8078;
+  --surface: #EDE8E2;
+  --surface-raised: #E5E0DA;
+  --surface-hover: #DDD8D2;
 }
 
-/* Fallback for system preference when no explicit theme is set */
+/* ----------------------------------------------------------------
+   SYSTEM PREFERENCE FALLBACKS
+   ---------------------------------------------------------------- */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --page-bg: #0a0a0f;
-    --text-primary: #ffffff;
-    --text-secondary: #e4e4e8;
-    --text-muted: #6a6a7a;
-    --text-muted-dark: #4a4a5a;
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.06);
-    --glass-hover-bg: rgba(255, 255, 255, 0.06);
-    --glass-hover-border: rgba(255, 255, 255, 0.12);
-    --accent: #e8a87c;
-    --gradient-1: #1a1a2e;
-    --gradient-2: #2d1f3d;
-    --gradient-3: #3d2a2a;
-    --divider: rgba(255, 255, 255, 0.1);
+    --bg: #000000;
+    --fg: #FFFFFF;
+    --fg-secondary: #A0A0A0;
+    --fg-muted: #555555;
+    --accent: #FF4D00;
+    --accent-hover: #FF6A2A;
+    --border: #222222;
+    --border-strong: #444444;
+    --surface: #0A0A0A;
+    --surface-raised: #111111;
+    --surface-hover: #1A1A1A;
   }
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme]) {
-    --background: #ffffff;
-    --foreground: #171717;
-    --page-bg: #f8f9fa;
-    --text-primary: #171717;
-    --text-secondary: #2d2d2d;
-    --text-muted: #6b7280;
-    --text-muted-dark: #9ca3af;
-    --glass-bg: rgba(0, 0, 0, 0.03);
-    --glass-border: rgba(0, 0, 0, 0.06);
-    --glass-hover-bg: rgba(0, 0, 0, 0.06);
-    --glass-hover-border: rgba(0, 0, 0, 0.12);
-    --accent: #e8a87c;
-    --gradient-1: #e5e7eb;
-    --gradient-2: #d1d5db;
-    --gradient-3: #f3f4f6;
-    --divider: rgba(0, 0, 0, 0.1);
+    --bg: #F5F0EB;
+    --fg: #000000;
+    --fg-secondary: #555555;
+    --fg-muted: #888888;
+    --accent: #FF4D00;
+    --accent-hover: #E04400;
+    --border: #C8C0B8;
+    --border-strong: #8A8078;
+    --surface: #EDE8E2;
+    --surface-raised: #E5E0DA;
+    --surface-hover: #DDD8D2;
   }
 }
 
+/* ----------------------------------------------------------------
+   BASE
+   ---------------------------------------------------------------- */
+* {
+  border-radius: 0 !important;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Theme-aware utility classes */
-.theme-page-bg {
-  background-color: var(--page-bg);
+::selection {
+  background: var(--accent);
+  color: #000000;
 }
 
-.theme-text-primary {
-  color: var(--text-primary);
-}
-
-.theme-text-secondary {
-  color: var(--text-secondary);
-}
-
-.theme-text-muted {
-  color: var(--text-muted);
-}
-
-.theme-text-muted-dark {
-  color: var(--text-muted-dark);
-}
-
-.theme-glass {
-  background-color: var(--glass-bg);
-  border-color: var(--glass-border);
-}
-
-.theme-glass:hover {
-  background-color: var(--glass-hover-bg);
-  border-color: var(--glass-hover-border);
-}
-
-.theme-gradient-1 {
-  background-color: var(--gradient-1);
-}
-
-.theme-gradient-2 {
-  background-color: var(--gradient-2);
-}
-
-.theme-gradient-3 {
-  background-color: var(--gradient-3);
-}
-
-.theme-divider {
-  background-color: var(--divider);
-}
-
-.theme-accent {
+/* ----------------------------------------------------------------
+   UTILITY CLASSES
+   ---------------------------------------------------------------- */
+.text-accent {
   color: var(--accent);
 }
 
-.theme-accent-hover:hover {
+.bg-surface {
+  background-color: var(--surface);
+}
+
+.bg-surface-raised {
+  background-color: var(--surface-raised);
+}
+
+.border-theme {
+  border-color: var(--border);
+}
+
+.border-strong {
+  border-color: var(--border-strong);
+}
+
+.text-fg {
+  color: var(--fg);
+}
+
+.text-secondary {
+  color: var(--fg-secondary);
+}
+
+.text-muted {
+  color: var(--fg-muted);
+}
+
+/* ----------------------------------------------------------------
+   BRUTALIST COMPONENTS
+   ---------------------------------------------------------------- */
+
+.btn-slab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.5rem;
+  border: 2px solid var(--fg);
+  background: transparent;
+  color: var(--fg);
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-slab:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.btn-accent {
+  border-color: var(--accent);
   color: var(--accent);
+}
+
+.btn-accent:hover {
+  background: var(--accent);
+  color: #000000;
+}
+
+.card-block {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.card-block:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-hover);
+}
+
+.grid-line {
+  height: 1px;
+  background: var(--border);
+  width: 100%;
+}
+
+.marker {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.idx {
+  font-family: var(--font-space-grotesk), system-ui, monospace;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+}
+
+.section-label {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.font-accent {
+  font-family: var(--font-caveat), cursive;
 }

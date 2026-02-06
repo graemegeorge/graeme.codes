@@ -1,5 +1,5 @@
 import Navigation from "../components/Navigation";
-import { FileText, Calendar, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -30,87 +30,90 @@ const blogPosts = [
     title: "Building Modern Web Experiences",
     excerpt:
       "Exploring the latest trends in frontend development and how to create exceptional user experiences.",
-    date: "January 15, 2026",
+    date: "2026.01.15",
     category: "Development",
+    idx: "01",
   },
   {
     title: "The Art of Component Design",
     excerpt:
       "A deep dive into creating reusable, composable React components that scale with your application.",
-    date: "January 10, 2026",
+    date: "2026.01.10",
     category: "Design",
+    idx: "02",
   },
   {
     title: "Performance Optimization Strategies",
     excerpt:
       "Practical techniques for improving web application performance and user experience.",
-    date: "January 5, 2026",
+    date: "2026.01.05",
     category: "Performance",
+    idx: "03",
   },
 ];
 
 export default function Blog() {
   return (
-    <main className="min-h-screen relative overflow-hidden">
-      <div className="absolute inset-0 theme-page-bg" />
-
-      <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 rounded-full blur-[120px] opacity-60 theme-gradient-1" />
-      <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 rounded-full blur-[120px] opacity-50 theme-gradient-2" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 rounded-full blur-[100px] opacity-30 theme-gradient-3" />
-
+    <main className="min-h-screen flex flex-col">
       <Navigation />
 
-      <div className="relative z-10 min-h-screen flex items-center justify-center flex-col flex-1 px-8 py-24">
-        <div className="w-full max-w-3xl">
-          <header className="flex flex-col items-center justify-center mb-12 gap-2">
-            <h1 className="text-4xl font-inter mb-2 theme-text-primary">
-              Blog
+      <div className="flex-1 px-6 md:px-12 py-16 md:py-24">
+        <div className="max-w-4xl">
+          {/* Page header */}
+          <div className="mb-16">
+            <p className="section-label mb-4">03 / Blog</p>
+            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-fg leading-[0.95]">
+              Thoughts on{" "}
+              <span className="font-accent text-5xl md:text-7xl text-accent">
+                craft
+              </span>
             </h1>
-            <p className="text-xl font-inter theme-text-muted">
-              Thoughts on development, design, and technology
-            </p>
-          </header>
+          </div>
 
-          <div className="space-y-4">
-            {blogPosts.map((post, index) => (
+          <div className="grid-line mb-0" />
+
+          {/* Posts */}
+          <div>
+            {blogPosts.map((post) => (
               <article
-                key={index}
-                className="group px-6 py-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 theme-glass"
+                key={post.idx}
+                className="group border-b border-theme"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span
-                        className="text-xs px-3 py-1 rounded-full theme-text-muted"
-                        style={{ backgroundColor: "var(--glass-bg)" }}
-                      >
-                        {post.category}
-                      </span>
-                      <div className="flex items-center gap-2 theme-text-muted">
-                        <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
-                        <span className="text-xs">{post.date}</span>
-                      </div>
-                    </div>
-                    <h2 className="text-xl font-inter mb-2 transition-colors duration-300 theme-text-primary theme-accent-hover">
-                      {post.title}
-                    </h2>
-                    <p className="text-sm leading-relaxed theme-text-muted">
-                      {post.excerpt}
-                    </p>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8 md:py-10">
+                  {/* Left column: metadata */}
+                  <div className="md:col-span-3 flex md:flex-col gap-4 md:gap-2">
+                    <span className="idx">{post.idx}</span>
+                    <span className="idx">{post.date}</span>
+                    <span className="text-xs px-2 py-0.5 border border-theme text-muted w-fit">
+                      {post.category}
+                    </span>
                   </div>
-                  <ArrowRight
-                    className="w-5 h-5 transition-all duration-300 flex-shrink-0 mt-1 theme-text-muted-dark theme-accent-hover group-hover:translate-x-1"
-                    aria-hidden="true"
-                  />
+
+                  {/* Right column: content */}
+                  <div className="md:col-span-9 flex items-start justify-between gap-4">
+                    <div>
+                      <h2 className="text-xl md:text-2xl font-medium text-fg mb-2 group-hover:text-accent transition-colors duration-150">
+                        {post.title}
+                      </h2>
+                      <p className="text-secondary text-sm leading-relaxed">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                    <ArrowUpRight
+                      className="w-5 h-5 text-muted group-hover:text-accent transition-colors duration-150 flex-shrink-0 mt-1"
+                      aria-hidden="true"
+                    />
+                  </div>
                 </div>
               </article>
             ))}
           </div>
-
-          <p className="text-sm font-light tracking-wide text-center mt-12 theme-text-muted-dark">
-            More posts coming soon
-          </p>
         </div>
+      </div>
+
+      {/* Footer */}
+      <div className="border-t border-theme px-6 md:px-12 py-4">
+        <p className="section-label">More posts coming soon</p>
       </div>
     </main>
   );

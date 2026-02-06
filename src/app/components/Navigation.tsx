@@ -1,23 +1,23 @@
 import Link from "next/link";
-import { Home } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 export default function Navigation() {
   return (
     <nav
-      className="absolute top-0 left-0 w-full z-20 px-8 py-6"
+      className="border-b border-theme px-6 md:px-12 py-4 flex items-center justify-between"
       aria-label="Main navigation"
     >
       <Link
         href="/"
-        className="group flex items-center gap-2 transition-colors duration-300 theme-text-secondary opacity-80 hover:opacity-100"
+        className="group flex items-center gap-2 text-muted hover:text-fg transition-colors duration-150"
         aria-label="Go to homepage"
       >
-        <Home
-          className="w-4 h-4 transition-colors duration-300 theme-accent-hover"
-          aria-hidden="true"
-        />
-        <span className="text-sm font-inter">Home</span>
+        <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+        <span className="section-label group-hover:text-fg transition-colors duration-150">
+          Back
+        </span>
       </Link>
+      <span className="section-label">Graeme George</span>
     </nav>
   );
 }
