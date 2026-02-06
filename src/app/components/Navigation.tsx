@@ -9,14 +9,14 @@ export default function Navigation() {
     >
       <Link
         href="/"
-        className="group flex items-center gap-2 transition-colors duration-300 theme-text-secondary opacity-80 hover:opacity-100"
+        className="group flex items-center gap-3 transition-colors duration-300 text-[var(--muted)] hover:text-[var(--accent)]"
         aria-label="Go to homepage"
       >
         <Home
-          className="w-4 h-4 transition-colors duration-300 theme-accent-hover"
+          className="w-4 h-4 transition-colors duration-300"
           aria-hidden="true"
         />
-        <span className="text-sm font-inter">Home</span>
+        <span className="text-sm uppercase tracking-[0.08em]">Home</span>
       </Link>
     </nav>
   );

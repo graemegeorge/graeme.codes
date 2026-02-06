@@ -1,6 +1,6 @@
-import Navigation from "../components/Navigation";
-import { Mail, Linkedin, Github, MessageSquare, Code2 } from "lucide-react";
+import { Mail, Linkedin, Github, Code2 } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Contact | Frontend Engineer | London, UK | Remote Available",
@@ -54,90 +54,66 @@ const contactMethods = [
 
 export default function Contact() {
   return (
-    <main className="min-h-screen relative overflow-hidden">
-      <div className="absolute inset-0 theme-page-bg" />
+    <main className="app-shell">
+      <div className="app-frame">
+        <header className="nav-rail">
+          <div className="label">Graeme George</div>
+          <nav className="nav-links" aria-label="Primary">
+            <Link href="/">Home</Link>
+            <Link href="/portfolio">Work</Link>
+            <Link href="/blog">Writing</Link>
+          </nav>
+        </header>
 
-      <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 rounded-full blur-[120px] opacity-60 theme-gradient-1" />
-      <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 rounded-full blur-[120px] opacity-50 theme-gradient-2" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 rounded-full blur-[100px] opacity-30 theme-gradient-3" />
-
-      <Navigation />
-
-      <div className="relative z-10 min-h-screen flex items-center justify-center flex-col flex-1 px-8 py-24">
-        <div className="w-full max-w-md">
-          <header className="flex flex-col items-center justify-center mb-12 gap-2">
-            <h1 className="text-4xl font-inter mb-2 theme-text-primary">
-              Contact
-            </h1>
-            <p className="text-xl font-inter theme-text-muted">
-              Let's work together
+        <section className="grid-12 mt-12">
+          <div className="col-span-12 lg:col-span-5">
+            <div className="label">Contact</div>
+            <h1 className="hero-title">Let’s build something precise.</h1>
+            <p className="subtle mt-4">
+              I collaborate with teams that value clarity, speed, and an
+              authored visual voice.
             </p>
-          </header>
-
-          <div className="space-y-3 mb-8">
+          </div>
+          <div className="col-span-12 lg:col-span-7 list-block">
             {contactMethods.map(({ label, value, href, icon: Icon }) => (
               <a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between w-full px-5 py-4 rounded-2xl border backdrop-blur-sm transition-all duration-300 theme-glass"
+                className="block flex items-center justify-between"
               >
                 <span className="flex items-center gap-3">
-                  <Icon
-                    className="w-5 h-5 transition-colors duration-300 theme-text-muted theme-accent-hover"
-                    aria-hidden="true"
-                  />
-                  <div className="flex flex-col items-start">
-                    <span className="font-medium theme-text-secondary">
-                      {label}
-                    </span>
-                    <span className="text-xs theme-text-muted">{value}</span>
-                  </div>
+                  <span className="icon-slab">
+                    <Icon className="w-4 h-4" aria-hidden="true" />
+                  </span>
+                  <span className="flex flex-col">
+                    <span className="text-sm">{label}</span>
+                    <span className="label">{value}</span>
+                  </span>
                 </span>
-                <svg
-                  className="w-4 h-4 transition-all duration-300 theme-text-muted-dark theme-accent-hover group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
+                <span className="label">Open</span>
               </a>
             ))}
-          </div>
-
-          <div className="px-6 py-5 rounded-2xl border backdrop-blur-sm mb-8 theme-glass">
-            <div className="flex items-start gap-3">
-              <MessageSquare
-                className="w-5 h-5 mt-0.5 flex-shrink-0 theme-text-muted"
-                aria-hidden="true"
-              />
-              <div className="flex-1">
-                <h3 className="text-sm font-inter mb-2 theme-text-primary">
-                  Get in Touch
-                </h3>
-                <p className="text-xs leading-relaxed theme-text-muted">
-                  I'm always open to discussing new projects, creative ideas, or
-                  opportunities to be part of your vision. Based in London, UK,
-                  but available for remote work across the UK and
-                  internationally. Feel free to reach out through any of the
-                  channels above.
-                </p>
-              </div>
+            <div className="block">
+              <div className="label">Availability</div>
+              <p className="text-base mt-3">
+                Remote-first, open to London or international collaborations.
+                Clear briefs move fastest.
+              </p>
             </div>
           </div>
+        </section>
 
-          <p className="text-sm font-light tracking-wide text-center theme-text-muted-dark">
-            Looking forward to hearing from you
-          </p>
-        </div>
+        <footer className="grid-12 mt-16 pb-10">
+          <div className="col-span-12">
+            <div className="rule" />
+          </div>
+          <div className="col-span-12 lg:col-span-6">
+            <p className="label">Response</p>
+            <p className="subtle mt-4">Replies within two business days.</p>
+          </div>
+        </footer>
       </div>
     </main>
   );

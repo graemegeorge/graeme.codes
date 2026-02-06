@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Hanken_Grotesk, Ballet, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ThemeToggle from "./components/ThemeToggle";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const hankenGrotesk = Hanken_Grotesk({
+  variable: "--font-ui",
+  subsets: ["latin"],
+});
+
+const ballet = Ballet({
+  variable: "--font-script",
   subsets: ["latin"],
 });
 
@@ -168,7 +168,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
+        className={`${hankenGrotesk.variable} ${ballet.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
           <ThemeToggle />
