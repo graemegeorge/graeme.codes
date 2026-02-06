@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ThemeToggle from "./components/ThemeToggle";
 
@@ -173,6 +174,7 @@ export default function RootLayout({
           <ThemeToggle />
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
