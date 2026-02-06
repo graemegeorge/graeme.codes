@@ -1,23 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ThemeToggle from "./components/ThemeToggle";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const spaceGrotesk = localFont({
+  src: "../../public/fonts/space-grotesk.woff2",
+  variable: "--font-space-grotesk",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+const caveat = localFont({
+  src: "../../public/fonts/caveat.woff2",
+  variable: "--font-caveat",
+  display: "swap",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://graeme.codes";
@@ -94,11 +91,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
-  verification: {
-    // Add your verification codes here when available
-    // google: "your-google-verification-code",
-    // yandex: "your-yandex-verification-code",
-  },
 };
 
 export default function RootLayout({
@@ -167,9 +159,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
-      >
+      <body className={`${spaceGrotesk.variable} ${caveat.variable} antialiased`}>
         <ThemeProvider>
           <ThemeToggle />
           {children}

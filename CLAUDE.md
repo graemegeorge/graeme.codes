@@ -30,4 +30,13 @@ This is a **Next.js 16 personal portfolio website** using the App Router pattern
 - **Path alias**: Use `@/*` for imports from `src/*`
 - **Server components by default**: Only use 'use client' when needed for interactivity
 - **Static content**: Blog posts, portfolio projects, and contact info are hardcoded arrays in page files
-- **Styling**: Dark theme with glassmorphism effects, orange accent color (#e8a87c)
+
+### Design System: Brutalist-Refined
+- **No rounded corners** — all elements use sharp, hard edges (`border-radius: 0 !important`)
+- **No glassmorphism, no gradients, no blur effects**
+- **Typography**: Space Grotesk (UI/body), Caveat (expressive accent/hero contrast)
+- **Colors**: Dark mode (#000000 bg, #FFFFFF text), Light mode (#F5F0EB bg, #000000 text), Accent (#FF4D00)
+- **CSS classes**: `btn-slab`, `btn-accent`, `card-block`, `grid-line`, `marker`, `idx`, `section-label`, `font-accent`
+- **Layout**: Swiss grid system, 12-column grid on content pages, strong use of negative space
+- **Borders**: Solid 1px borders using `border-theme` / `border-strong` classes
+- **Philosophy**: Minimal, bold, engineered — not decorated
