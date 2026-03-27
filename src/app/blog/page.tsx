@@ -1,6 +1,8 @@
+import Link from "next/link";
 import Navigation from "../components/Navigation";
-import { FileText, Calendar, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
+import { blogPosts } from "./data";
 
 export const metadata: Metadata = {
   title: "Blog | Frontend Development Articles | React & Next.js",
@@ -25,30 +27,6 @@ export const metadata: Metadata = {
   },
 };
 
-const blogPosts = [
-  {
-    title: "Building Modern Web Experiences",
-    excerpt:
-      "Exploring the latest trends in frontend development and how to create exceptional user experiences.",
-    date: "January 15, 2026",
-    category: "Development",
-  },
-  {
-    title: "The Art of Component Design",
-    excerpt:
-      "A deep dive into creating reusable, composable React components that scale with your application.",
-    date: "January 10, 2026",
-    category: "Design",
-  },
-  {
-    title: "Performance Optimization Strategies",
-    excerpt:
-      "Practical techniques for improving web application performance and user experience.",
-    date: "January 5, 2026",
-    category: "Performance",
-  },
-];
-
 export default function Blog() {
   return (
     <main className="min-h-screen relative overflow-hidden">
@@ -72,11 +50,8 @@ export default function Blog() {
           </header>
 
           <div className="space-y-4">
-            {blogPosts.map((post, index) => (
-              <article
-                key={index}
-                className="group px-6 py-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 theme-glass"
-              >
+            {blogPosts.map((post, index) => {
+              const CardContent = (
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
@@ -91,7 +66,7 @@ export default function Blog() {
                         <span className="text-xs">{post.date}</span>
                       </div>
                     </div>
-                    <h2 className="text-xl font-inter mb-2 transition-colors duration-300 theme-text-primary theme-accent-hover">
+                    <h2 className="text-xl font-inter mb-2 transition-colors duration-300 theme-text-primary group-hover:text-[#e8a87c]">
                       {post.title}
                     </h2>
                     <p className="text-sm leading-relaxed theme-text-muted">
@@ -99,12 +74,36 @@ export default function Blog() {
                     </p>
                   </div>
                   <ArrowRight
-                    className="w-5 h-5 transition-all duration-300 flex-shrink-0 mt-1 theme-text-muted-dark theme-accent-hover group-hover:translate-x-1"
+                    className="w-5 h-5 transition-all duration-300 flex-shrink-0 mt-1 theme-text-muted-dark group-hover:text-[#e8a87c] group-hover:translate-x-1"
                     aria-hidden="true"
                   />
                 </div>
-              </article>
-            ))}
+              );
+
+              if (post.content) {
+                return (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="group block px-6 py-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 theme-glass hover:border-[#e8a87c]/30"
+                  >
+                    {CardContent}
+                  </Link>
+                );
+              }
+
+              return (
+                <article
+                  key={index}
+                  className="group px-6 py-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 theme-glass opacity-60"
+                >
+                  {CardContent}
+                  <span className="text-xs mt-3 block theme-text-muted-dark">
+                    Coming soon
+                  </span>
+                </article>
+              );
+            })}
           </div>
 
           <p className="text-sm font-light tracking-wide text-center mt-12 theme-text-muted-dark">
